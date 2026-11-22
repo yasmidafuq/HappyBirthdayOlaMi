@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101b35">
+<title>A Little Something for You ♡</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Great+Vibes&display=swap');
+:root{--wine:#7899d5;--wine-dark:#172747;--rose:#a9c8f4;--pink:#dce9ff;--cream:#edf2f8;--paper:#fbfdff;--ink:#182235;--lav:#dce6f5;--blue:#cbdcf0;--shadow:0 18px 50px #0b173025}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--cream);color:var(--ink);font-family:'DM Sans',sans-serif}button,input{font:inherit}button{cursor:pointer}.hidden{display:none!important}
+#gate{min-height:100svh;position:relative;display:grid;align-items:center;justify-items:start;overflow:hidden;background:#080d18;color:white;padding:clamp(18px,5vw,64px)}
+#gateVideo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;opacity:.82;filter:saturate(.92) brightness(.9)}
+.gate-shade{position:absolute;inset:0;background:linear-gradient(90deg,#071020d9 0%,#0b173c99 34%,#07102020 72%,#07102030 100%)}
+.gate-card{position:relative;z-index:1;width:min(390px,100%);margin-left:clamp(0px,2vw,28px);padding:30px 24px;border:1px solid #dce9ff66;border-radius:26px;background:#09152dcc;backdrop-filter:blur(7px);text-align:center;box-shadow:0 20px 70px #0007}
+.eyebrow{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;opacity:.8}.gate-card h1{font:italic 500 clamp(2.2rem,8vw,3.3rem) 'Playfair Display',serif;margin:12px 0}.gate-card p{line-height:1.7;color:#f4e4e4}.password-dots{letter-spacing:.5em;font-size:1.3rem;margin:14px 0;color:#f2c9d0;min-height:20px}.password-input{width:100%;padding:13px 15px;border-radius:12px;border:1px solid #ffffff55;background:#ffffff12;color:white;text-align:center;outline:none}.password-input::placeholder{color:#ffffffa8}.password-input:focus{border-color:#f2c9d0}
+.keypad{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:18px}.keypad button{border:1px solid #ffffff38;background:#ffffff12;color:white;border-radius:14px;padding:13px;font-size:1.05rem}.keypad button:active{background:#ffffff35;transform:scale(.97)}.gate-actions{display:flex;gap:10px;justify-content:center;margin-top:13px}.gate-actions button,.primary{border:0;border-radius:999px;padding:12px 21px;background:var(--pink);color:var(--wine-dark);font-weight:700}.gate-error{min-height:22px;color:#ffc7ce;font-size:.85rem;margin-top:9px}
+#site{overflow:hidden}.topbar{position:sticky;top:0;z-index:20;background:#f8f0e6eF;backdrop-filter:blur(12px);border-bottom:1px solid #873f4918;display:flex;align-items:center;justify-content:space-between;padding:12px clamp(16px,5vw,60px)}.brand{font:italic 1.2rem 'Playfair Display',serif;color:var(--wine)}.music-btn{border:1px solid #873f4940;border-radius:999px;background:#fffaf2;padding:9px 14px;color:var(--wine-dark);font-size:.85rem}
+section{padding:76px 20px;position:relative}.wrap{width:min(980px,100%);margin:auto}.section-tag{text-transform:uppercase;letter-spacing:.2em;font-size:.7rem;color:var(--wine);font-weight:700}.section-title{font:600 clamp(2.1rem,6vw,3.7rem) 'Playfair Display',serif;color:var(--wine-dark);margin:10px 0 14px}.section-intro{max-width:620px;line-height:1.8;color:#6d5557}.center{text-align:center}.hero{min-height:74svh;display:grid;place-items:center;text-align:center;background:radial-gradient(circle at 20% 20%,#e5dff5 0 10%,transparent 28%),radial-gradient(circle at 90% 80%,#f0d3d7 0 10%,transparent 30%),var(--cream);padding:70px 20px}.hero-inner{max-width:760px}.hero h2{font:500 clamp(3rem,11vw,6.8rem)/1.02 'Playfair Display',serif;color:var(--wine-dark);margin:18px 0}.script{font:clamp(2rem,7vw,3.5rem) 'Great Vibes',cursive;color:var(--rose)}.hero p{max-width:570px;margin:20px auto;line-height:1.8;color:#6d5557}.sparkle{font-size:1.5rem;color:var(--wine)}.scroll-hint{margin-top:40px;font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:#8a6b70}
+.letter-section{background:#142442;color:#f7faff}.letter-section .section-tag{color:#f2c4cb}.letter-section .section-title{color:#fff4ec}.letter-section .section-intro{color:#f3dfe0;margin-left:auto;margin-right:auto}
+.envelope-wrap{display:grid;place-items:center;margin:38px auto 22px;perspective:1000px}.envelope{width:min(340px,85vw);height:220px;position:relative;border:0;background:transparent;filter:drop-shadow(0 18px 20px #2b111b55);padding:0}.env-back{position:absolute;inset:0;background:linear-gradient(145deg,#202a3b,#080d16);border:1px solid #a9c8ef66;border-radius:7px}.env-front{position:absolute;inset:0;background:linear-gradient(145deg,#172235,#080d16);border:1px solid #a9c8ef66;clip-path:polygon(0 0,50% 58%,100% 0,100% 100%,0 100%);border-radius:7px}.env-flap{position:absolute;inset:0;background:linear-gradient(145deg,#26344a,#111a29);border:1px solid #b9d3f266;clip-path:polygon(0 0,100% 0,50% 60%);transform-origin:top;transition:transform .8s;z-index:3}.seal{position:absolute;z-index:4;left:50%;top:53%;transform:translate(-50%,-50%);width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(145deg,#dce9ff,#8eaddd);color:#101b35;font-size:1.3rem;box-shadow:0 3px 12px #0008;border:1px solid #f5f9ff;transition:opacity .3s}.envelope.open .env-flap{transform:rotateX(180deg);z-index:0}.envelope.open .seal{opacity:0}.tap-hint{font-size:.85rem;color:#f5dfe0}
+.letter{display:none;max-width:700px;margin:30px auto 0;padding:clamp(25px,6vw,48px);background:var(--paper);color:#49363a;border-radius:4px;box-shadow:var(--shadow);background-image:repeating-linear-gradient(0deg,transparent,transparent 31px,#b98f8520 32px)}.letter.visible{display:block;animation:rise .8s ease both}.letter h3{font:italic 2rem 'Playfair Display',serif;color:var(--wine);margin-top:0}.letter-text{white-space:pre-wrap;line-height:2;font:1rem/2 'Playfair Display',serif;min-height:130px}.letter-sign{font:2rem 'Great Vibes',cursive;color:var(--wine);text-align:right;margin-top:22px}
+@keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+.bingo-section{background:linear-gradient(135deg,#e6edf7,#dce6f4)}.bingo-layout{display:grid;grid-template-columns:1fr 1.2fr;gap:28px;align-items:center;margin-top:30px}.bingo-note{background:#fffaf2;padding:25px;border-radius:18px;box-shadow:var(--shadow);transform:rotate(-1deg)}.bingo-note h3{font:italic 1.8rem 'Playfair Display',serif;color:var(--wine);margin:0 0 10px}.bingo-note p{line-height:1.8;color:#705b5e}.bingo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;background:var(--wine);padding:8px;border-radius:13px;box-shadow:var(--shadow)}.bingo-cell{min-height:112px;border:0;background:#fff5eb;color:var(--wine-dark);padding:9px 5px;font:600 .78rem/1.4 'Playfair Display',serif;position:relative}.bingo-cell.selected{background:#c8dcff;color:#172747}.bingo-cell.selected:after{content:'♡';position:absolute;right:6px;top:3px;font-size:1rem}.bingo-cell.free{background:#d8e6fb}.bingo-status{text-align:center;margin-top:15px;color:var(--wine-dark);font-weight:700;min-height:25px}.small-btn{border:1px solid #873f4955;background:#fffaf2;color:var(--wine);border-radius:999px;padding:10px 17px;margin-top:12px}
+.puzzle-section{background:var(--paper)}.puzzle-layout{display:grid;grid-template-columns:minmax(0,390px) 1fr;gap:35px;align-items:center;margin-top:30px}.puzzle-board{display:grid;grid-template-columns:repeat(3,1fr);aspect-ratio:1;border:7px solid #243b64;background:#dce8f8;gap:2px;box-shadow:var(--shadow);touch-action:manipulation}.piece{border:0;min-width:0;min-height:0;background-repeat:no-repeat;background-size:300% 300%;position:relative;cursor:grab}.piece:focus-visible{outline:3px solid #2c6d99;z-index:2}.piece.dragging{opacity:.45}.piece.over{outline:3px dashed white;outline-offset:-5px}.piece-num{position:absolute;bottom:3px;right:5px;color:#fff;text-shadow:0 1px 4px #000;font-size:.7rem;opacity:.7}.puzzle-help{line-height:1.8;color:#705b5e}.puzzle-success{font:italic 1.8rem 'Playfair Display',serif;color:var(--wine);margin-top:15px}
+.final-section{background:#0d172b;color:#f5f8ff;text-align:center;min-height:65svh;display:grid;place-items:center}.final-section .section-tag{color:#e9b9c3}.final-section .section-title{color:#fff2e8}.final-message{font:italic clamp(1.3rem,4vw,2rem)/1.6 'Playfair Display',serif;max-width:650px;margin:20px auto}.footer{padding:20px;text-align:center;background:#080d18;color:#cbd8ed;font-size:.75rem}
+
+.gift-wrap{display:grid;place-items:center;margin:30px auto 18px;min-height:150px}
+.gift-box{position:relative;width:112px;height:82px;background:linear-gradient(135deg,#dce9ff,#8eaddd);border-radius:8px 8px 12px 12px;box-shadow:0 16px 35px #0006;transition:transform .7s,opacity .7s}
+.gift-box:before{content:"";position:absolute;left:44px;top:0;width:23px;height:100%;background:#f8fbff}
+.gift-lid{position:absolute;left:-9px;top:-15px;width:130px;height:22px;border-radius:7px;background:#b6ccef;box-shadow:0 5px 12px #0003;transition:transform .7s}
+.gift-ribbon{position:absolute;left:44px;top:0;width:23px;height:100%;background:#f8fbff}
+.gift-bow{position:absolute;left:42px;top:-37px;color:#fff;font-size:34px;text-shadow:0 2px 10px #0005}
+.gift-wrap.open .gift-box{transform:translateY(20px) scale(.9);opacity:.35}
+.gift-wrap.open .gift-lid{transform:translate(24px,-48px) rotate(25deg)}
+.voice-reveal{max-width:520px;margin:24px auto;padding:24px;border:1px solid #cbd8ed55;border-radius:20px;background:#ffffff0d;animation:rise .8s ease both}
+.voice-reveal audio{width:min(100%,380px);margin-top:10px}
+
+.confetti{position:fixed;top:-20px;width:9px;height:14px;z-index:99;pointer-events:none;animation:fall 3.2s linear forwards}@keyframes fall{to{transform:translateY(110vh) rotate(720deg);opacity:.2}}
+@media(max-width:720px){#gate{align-items:end;justify-items:center;padding:18px}#gateVideo{object-position:center center}.gate-card{margin:0;width:min(390px,100%);padding:22px 18px;background:#09152de8}.gate-card h1{font-size:2.25rem}.keypad{gap:7px}.keypad button{padding:10px}section{padding:60px 18px}.bingo-layout,.puzzle-layout{grid-template-columns:1fr}.bingo-note{order:2}.bingo-cell{min-height:92px;font-size:.73rem}.puzzle-board{width:min(100%,380px);margin:auto}.puzzle-layout .puzzle-help{text-align:center}.topbar{padding:10px 15px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<!-- PASSWORD ENTRANCE -->
+<div id="gate">
+  <video id="gateVideo" autoplay muted loop playsinline poster="assets/his-photo.jpg">
+    <source src="assets/his-video.mp4" type="video/mp4">
+  </video>
+  <div class="gate-shade"></div>
+  <div class="gate-card">
+    <div class="eyebrow">A little birthday surprise</div>
+    <h1>Just for you ♡</h1>
+    <p>Some things are better opened with a little secret. Enter the password to come in.</p>
+    <input class="password-input" id="passwordInput" type="password" placeholder="Enter your secret password" autocomplete="off" aria-label="Birthday password">
+    <div class="password-dots" id="passwordDots">♡</div>
+    <div class="keypad" id="keypad">
+      <button data-key="1">1</button><button data-key="2">2</button><button data-key="3">3</button>
+      <button data-key="4">4</button><button data-key="5">5</button><button data-key="6">6</button>
+      <button data-key="7">7</button><button data-key="8">8</button><button data-key="9">9</button>
+      <button data-key="clear">Clear</button><button data-key="0">0</button><button data-key="back">⌫</button>
+    </div>
+    <div class="gate-actions"><button class="primary" id="unlockBtn">Unlock ♡</button></div>
+    <div class="gate-error" id="gateError" aria-live="polite"></div>
+  </div>
+</div>
+
+<div id="site" class="hidden">
+  <header class="topbar">
+    <div class="brand">a little something ♡</div>
+    <button class="music-btn" id="musicBtn" type="button">♫ Play music</button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="sparkle">✦ &nbsp; ✧ &nbsp; ♡ &nbsp; ✧ &nbsp; ✦</div>
+        <div class="script">23-11-26 : today is all about you.</div>
+        <h2><span id="heroName">My Favourite Person</span></h2>
+        <p>I made you a tiny corner of the internet. There are a few things inside, so take your time, explore, and don't skip the surprises.</p>
+        <a class="primary" href="#letter" style="display:inline-block;text-decoration:none">Let's begin ↓</a>
+        <div class="scroll-hint">made with love, by yours lovely Yaasmeen</div>
+      </div>
+    </section>
+
+    <section class="letter-section center" id="letter">
+      <div class="wrap">
+        <div class="section-tag">01 · a little letter</div>
+        <h2 class="section-title">Something I wanted you to read</h2>
+        <p class="section-intro">I could have just sent you a message, but you deserve something a little more special. Tap the envelope, birthday boy!!!.</p>
+        <div class="envelope-wrap">
+          <button class="envelope" id="envelope" aria-label="Open your birthday letter">
+            <span class="env-back"></span><span class="env-flap"></span><span class="env-front"></span><span class="seal">♡</span>
+          </button>
+        </div>
+        <div class="tap-hint" id="tapHint">Tap to open your letter</div>
+        <article class="letter" id="letterPaper">
+          <h3>To OLA MI,</h3>
+          <div class="letter-text" id="typedLetter"></div>
+          <div class="letter-sign" id="letterSign">Omobola, always ♡</div>
+        </article>
+      </div>
+    </section>
+
+    <section class="bingo-section" id="bingo">
+      <div class="wrap">
+        <div class="center">
+          <div class="section-tag">02 · the birthday bingo</div>
+          <h2 class="section-title">A completely unbiased study of you</h2>
+          <p class="section-intro" style="margin:auto">Let's see how many of these are painfully accurate. Tap every square that describes you. No arguing with the results.</p>
+        </div>
+        <div class="bingo-layout">
+          <div class="bingo-note">
+            <h3>Official findings ♡</h3>
+            <p>This highly scientific research has been conducted by someone who likes you an unreasonable amount. Select the squares that fit. The centre is a free space because, obviously, i know you too well!.</p>
+            <button class="small-btn" id="resetBingo">Start again</button>
+          </div>
+          <div>
+            <div class="bingo-grid" id="bingoGrid" aria-label="Interactive birthday bingo"></div>
+            <div class="bingo-status" id="bingoStatus" aria-live="polite">0 squares selected</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="puzzle-section" id="puzzle">
+      <div class="wrap">
+        <div class="center">
+          <div class="section-tag">03 · pieces of you</div>
+          <h2 class="section-title">A little picture puzzle</h2>
+          <p class="section-intro" style="margin:auto">A few pieces got mixed up. Put them back together to reveal the birthday boy. Tap one piece, then another to swap them. You can do this!</p>
+        </div>
+        <div class="puzzle-layout">
+          <div class="puzzle-board" id="puzzleBoard" aria-label="Nine-piece photo puzzle"></div>
+          <div class="puzzle-help">
+            <h3 style="font:italic 1.8rem 'Playfair Display',serif;color:var(--wine)">Piece by piece ♡</h3>
+            <p>Choose a piece and then choose where it should go. You can also drag and drop pieces on a computer. The photo will come together when every piece is in its place.</p>
+            <button class="small-btn" id="shufflePuzzle">Mix the pieces again</button>
+            <div class="puzzle-success" id="puzzleSuccess" aria-live="polite"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-section" id="final">
+      <div class="wrap">
+        <div class="section-tag">04 · one last thing</div>
+        <div class="script" style="color:#e6aeb8">and finally...</div>
+        <h2 class="section-title">Happy Birthday, My Love ♡</h2>
+        <p class="final-message" id="finalMessage"> I LOVE YOU.</p>
+        <div class="gift-wrap" id="giftWrap" aria-label="A wrapped birthday gift">
+          <div class="gift-box" aria-hidden="true"><span class="gift-lid"></span><span class="gift-ribbon"></span><span class="gift-bow">♡</span></div>
+        </div>
+        <p class="final-message" style="font-size:1.15rem" id="giftPrompt">Wait… one more surprise.</p>
+        <button class="primary" id="openGiftBtn">Open your last surprise ♡</button>
+        <div class="voice-reveal hidden" id="voiceReveal">
+          <p class="final-message">I wanted you to hear this one in my own voice. ♡</p>
+          <audio id="voiceMessage" controls preload="none"><source src="assets/voice-message.mp4" type="audio/mpeg"></audio>
+        </div>
+        <p style="margin-top:25px;color:#cbd8ed;font-size:.8rem">made with a lot of love, just for you.</p>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">a tiny website for a very special human ♡</footer>
+</div>
+
+<video id="bgMusic" loop playsinline preload="auto" aria-hidden="true" tabindex="-1" style="position:fixed;width:1px;height:1px;opacity:0;pointer-events:none;left:-10px;bottom:-10px"><source src="assets/meji.mp4" type="video/mp4"></video>
+
+<script>
+/* ==========================================================
+   PERSONALISE THIS PART FIRST — edit the values between quotes
+   ========================================================== */
+const CONFIG = {
+  password: "1507", 
+  hisName: "OLA MI",
+  yourSignOff: "Omobola, always ♡",
+  birthdayLetter: `Happy birthday, my love (my husband-to-be 😉).
+
+There are so many things I love about you, and I honestly don’t think I could fit all of them into one letter, but I’ll try.
+
+Three things I appreciate about you
+
+First, I love how you make my worries disappear. Anytime I come to you with something that’s bothering me, or I tell you how I’m feeling, you somehow always know the right things to say. Sometimes, I don’t even know how to explain what’s going on in my head, but you always seem to find the words that make everything feel a little less overwhelming. I love that I can come to you with my worries and somehow leave feeling better. It’s such a special thing to have, and I appreciate it more than you know.
+
+Second, I love how funny and intelligent you are. I love your sense of humour, your smile, the way you explain things and how you can make even the most random conversations interesting. I genuinely enjoy talking to you. I love how much I can learn from you, and I love that there’s always something new to discuss with you.
+
+Third, I love how considerate you are. One thing I particularly appreciate is how you take time to reflect on things. Sometimes, when we have a conversation and something doesn’t sit quite right with me, you might not necessarily have an immediate response. But I love that you go back, think about it and sometimes come back to say, “You know what? I’ve thought about what I said, and I understand how you might see things differently.” That means so much to me. It shows me that you care about how I feel, that you’re willing to understand me and that you’re not afraid to reflect and grow. I really, really love that about you.
+
+What you mean to me
+
+Having you in my life has also made me want to do more with myself. You’ve made me want to learn new things and explore interests I might not have thought much about before. Things like learning how to play chess, understanding more about football, and even getting back into reading, which I used to enjoy so much before I gradually stopped.
+
+I find myself wanting to know more, try more things and keep learning. And I think that’s such a lovely thing about having you in my life. You make me excited about discovering new things, and I love that. I don’t think you even realise how much that means to me.
+
+Sometimes, I’ll just be on my phone and see something and immediately think, “Oh, I can’t wait for Olami to come so we can do this together.” I’ll see something online that I think would look good on you and save it because I’m already imagining you wearing it. I’ll come across a restaurant or a particular meal, save it and think about how we need to try it together.
+
+It’s funny how you’ve become part of so many little things in my everyday life, even when you’re not physically here. I find myself looking forward to all the ordinary things we’ll get to do together, and I think that’s one of the sweetest parts of loving someone. It’s not just the big moments I’m excited about; it’s also all the little everyday moments I get to share with you.
+
+A little memory
+
+I have to include what happened today because I still find it so funny. 😂
+
+Remember when I was asking you for your floor address and you thought I said phone address? You immediately started giving me your phone number, and I was there wondering what kind of floor number that was. I even asked if you were trolling me. Meanwhile, we were having two completely different conversations without realising it.
+
+Then it finally clicked that you’d heard “phone” instead of “floor”, and when I explained what I actually meant, we both just laughed. It’s such a random little moment, but I love things like that. I love our silly misunderstandings, our random conversations and all the little moments that become memories without us even planning them.
+
+My wishes for you
+
+As you begin another year of your life, I wish you nothing but the very best. I pray that this new year brings you happiness, success, good health, long life, prosperity and more wealth than you could ever imagine.
+
+May God bless you with everything your heart desires. May He open doors for you, make things easier for you, protect you wherever you go and grant you success in everything you set out to do. May this be a year of answered prayers, beautiful opportunities and so many reasons to smile.
+
+And, of course, I pray that God continues to bless what we have. May the love between us continue to grow, may we always find understanding in each other, and may He bless our relationship and the marriage we’re about to begin in January. May our Nikkah be beautiful and blessed, and may our home be filled with love, peace, happiness and barakah. May He grant us everything we’re praying for, and even the things we haven’t thought to ask for yet.
+
+Everything I’m looking forward to
+
+I honestly get so excited thinking about our future. I can’t wait to see us grow together, build our lives, achieve our individual and shared goals, have our children and create a home of our own.
+
+I can’t wait for all our travels, the new places we’ll discover, the different foods we’ll try, the pictures we’ll take and all the experiences we’ll get to share.
+
+And Saudi Arabia! I genuinely cannot wait for us to go together. I’m so excited about that one. 😂 I also can’t wait for South Korea, Japan, China, Europe and all the other places we’ve talked about visiting. I want to experience so many things with you, and I’m excited that I get to look forward to all of that with you.
+
+I don’t know exactly what the future holds, but I know I’m excited to find out, especially because I get to experience it with you.
+
+Happy birthday once again, my love. I hope today reminds you of just how special you are and how much you are loved.
+
+Here’s to you, to us and to all the beautiful things still ahead of us. ❤️`,
+  bingoItems: [
+    "Likes Apple flavoured Jogobella",
+    "Birthday boy has a funny laugh",
+    `"i was watching a chess match actually"`,
+    `"O ti da bayen"`,
+    "Yaasmeen Kamar is the love of his life",
+    "Have a way with words",
+    "Have be in poland for almost 5 years, and still can't speak polish",
+    "Today is his birthday",
+    `"ahmm,Omobola i am about to go sleep"`
+  ],
+  finalMessage: "I LOVE YOU."
+};
+/* ========================================================== */
+
+document.getElementById("heroName").textContent = CONFIG.hisName;
+document.getElementById("letterSign").textContent = CONFIG.yourSignOff;
+document.getElementById("finalMessage").textContent = CONFIG.finalMessage;
+
+let entered = "";
+const dots = document.getElementById("passwordDots");
+const passInput = document.getElementById("passwordInput");
+const error = document.getElementById("gateError");
+function updateDots(){ passInput.value = entered; dots.textContent = entered ? "♡ ".repeat(Math.min(entered.length,8)).trim() : "♡"; }
+document.getElementById("keypad").addEventListener("click", e => {
+  const key=e.target.closest("button")?.dataset.key; if(!key)return;
+  if(key==="clear") entered=""; else if(key==="back") entered=entered.slice(0,-1); else if(entered.length<32) entered+=key;
+  updateDots(); error.textContent="";
+});
+passInput.addEventListener("input",()=>{entered=passInput.value;error.textContent="";});
+function unlock(){
+  entered=passInput.value;
+  if(entered.toLowerCase() !== CONFIG.password.toLowerCase()){
+    error.textContent="Not quite, try again ♡"; entered=""; passInput.value=""; updateDots(); return;
+  }
+  document.getElementById("gate").classList.add("hidden");
+  document.getElementById("site").classList.remove("hidden");
+  // Try to play after the visitor's unlock tap. Browser settings may still block autoplay.
+  startMusic();
+  window.scrollTo(0,0);
+}
+document.getElementById("unlockBtn").addEventListener("click",unlock);
+document.addEventListener("keydown",e=>{
+  if(document.getElementById("gate").classList.contains("hidden"))return;
+  if(e.key==="Enter")unlock();
+});
+
+const music=document.getElementById("bgMusic"), musicBtn=document.getElementById("musicBtn");
+async function startMusic(){try{await music.play();musicBtn.textContent="♫ Pause music"}catch(e){musicBtn.textContent="♫ Play music"}}
+musicBtn.addEventListener("click",async()=>{if(music.paused)await startMusic();else{music.pause();musicBtn.textContent="♫ Play music"}});
+
+let letterOpened=false;
+document.getElementById("envelope").addEventListener("click",()=>{
+  if(letterOpened)return;letterOpened=true;
+  document.getElementById("envelope").classList.add("open");
+  document.getElementById("tapHint").textContent="A little something from me to you...";
+  setTimeout(()=>{
+    const paper=document.getElementById("letterPaper");paper.classList.add("visible");
+    const target=document.getElementById("typedLetter");const message=CONFIG.birthdayLetter;
+    let i=0;const timer=setInterval(()=>{target.textContent=message.slice(0,i+=2);if(i>=message.length)clearInterval(timer)},24);
+  },650);
+});
+
+const bingoGrid=document.getElementById("bingoGrid"), bingoStatus=document.getElementById("bingoStatus");
+function renderBingo(){
+  bingoGrid.innerHTML="";
+  CONFIG.bingoItems.forEach((item,i)=>{
+    const b=document.createElement("button");b.className="bingo-cell"+(i===4?" free selected":"");b.textContent=item;
+    b.setAttribute("aria-pressed",i===4?"true":"false");
+    if(i!==4)b.addEventListener("click",()=>{b.classList.toggle("selected");b.setAttribute("aria-pressed",b.classList.contains("selected")?"true":"false");updateBingo()});
+    bingoGrid.appendChild(b);
+  });updateBingo();
+}
+function updateBingo(){
+  const selected=[...bingoGrid.children].filter(x=>x.classList.contains("selected")).length;
+  bingoStatus.textContent=selected+" of 9 squares selected"+(selected===9?" — BINGO! You know yourself very well. ♡":"");
+}
+document.getElementById("resetBingo").addEventListener("click",renderBingo);renderBingo();
+
+const board=document.getElementById("puzzleBoard"), puzzleSuccess=document.getElementById("puzzleSuccess");
+let order=[], selectedPiece=null, dragFrom=null;
+function shuffleArray(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function initPuzzle(){
+  order=shuffleArray([0,1,2,3,4,5,6,7,8]);selectedPiece=null;dragFrom=null;puzzleSuccess.textContent="";renderPuzzle();
+  if(order.every((v,i)=>v===i)){[order[0],order[1]]=[order[1],order[0]];renderPuzzle()}
+}
+function renderPuzzle(){
+  board.innerHTML="";
+  order.forEach((pieceIndex,slot)=>{
+    const piece=document.createElement("button");piece.className="piece";piece.type="button";
+    const row=Math.floor(pieceIndex/3),col=pieceIndex%3;
+    piece.style.backgroundImage="url('assets/his-photo.jpg')";
+    piece.style.backgroundPosition=(col*50)+"% "+(row*50)+"%";
+    piece.setAttribute("aria-label","Puzzle piece "+(slot+1));
+    piece.draggable=true;
+    piece.addEventListener("click",()=>handlePieceClick(slot,piece));
+    piece.addEventListener("dragstart",()=>{dragFrom=slot;piece.classList.add("dragging")});
+    piece.addEventListener("dragend",()=>piece.classList.remove("dragging"));
+    piece.addEventListener("dragover",e=>{e.preventDefault();piece.classList.add("over")});
+    piece.addEventListener("dragleave",()=>piece.classList.remove("over"));
+    piece.addEventListener("drop",e=>{e.preventDefault();piece.classList.remove("over");if(dragFrom!==null)swapPieces(dragFrom,slot)});
+    board.appendChild(piece);
+  });
+}
+function handlePieceClick(slot,piece){
+  if(selectedPiece===null){selectedPiece=slot;piece.style.outline="3px solid #c77b83";return}
+  if(selectedPiece===slot){selectedPiece=null;renderPuzzle();return}
+  swapPieces(selectedPiece,slot);selectedPiece=null;
+}
+function swapPieces(a,b){[order[a],order[b]]=[order[b],order[a]];selectedPiece=null;renderPuzzle();if(order.every((v,i)=>v===i)){puzzleSuccess.textContent="😂 Oops! I am so sorry — I had to use this photo. You are still my favourite, though. ♡";confetti()}}
+document.getElementById("shufflePuzzle").addEventListener("click",initPuzzle);initPuzzle();
+
+function confetti(){
+  const symbols=["✦","♡","✧","●"];
+  for(let i=0;i<65;i++){
+    const el=document.createElement("span");el.className="confetti";el.textContent=symbols[Math.floor(Math.random()*symbols.length)];
+    el.style.left=Math.random()*100+"vw";el.style.animationDelay=Math.random()*1.2+"s";el.style.color=["#f2c9d0","#dcd5ef","#e6b98b","#fff1e8"][i%4];
+    document.body.appendChild(el);setTimeout(()=>el.remove(),4500);
+  }
+}
+document.getElementById("openGiftBtn").addEventListener("click",()=>{
+  const gift=document.getElementById("giftWrap");
+  gift.classList.add("open");
+  document.getElementById("giftPrompt").textContent="A little piece of me, just for you. ♡";
+  document.getElementById("openGiftBtn").classList.add("hidden");
+  document.getElementById("voiceReveal").classList.remove("hidden");
+  confetti();
+  const voice=document.getElementById("voiceMessage");
+  voice.play().catch(()=>{});
+});
+</script>
+</body>
+</html>
